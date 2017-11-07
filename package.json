@@ -1,0 +1,25 @@
+{
+  "name": "openwhisk-logstash-forwarder",
+  "version": "0.1.0",
+  "description": "Logstash forwarder for OpenWhisk platform logs into Elasticsearch",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "ava",
+    "build": "babel lib -d dist"
+  },
+  "author": "James Thomas <james@jamesthom.as>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "lumberjack-protocol": "^1.0.7",
+    "openwhisk": "^3.9.0"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-es2017-object-entries": "0.0.4",
+    "babel-preset-env": "^1.6.1",
+    "sinon": "^4.0.1"
+  }
+}
