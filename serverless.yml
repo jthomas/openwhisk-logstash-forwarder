@@ -1,0 +1,21 @@
+service: logging
+
+provider:
+  name: openwhisk
+
+functions:
+  logstash-forwarder:
+    handler: dist/index.main
+    parameters:
+      actions:
+        - sample_logs
+      from: <MS_SINCE_EPOCH>
+      logstash:
+        host: <LOGSTASH_HOST>
+        port: <LOGSTASH_PORT>
+        rejectUnauthorized: false
+    events:
+      - schedule: cron(* * * * *)
+
+plugins:
+  - serverless-openwhisk

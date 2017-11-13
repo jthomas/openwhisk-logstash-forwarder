@@ -14,9 +14,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 const Activations = require('./activations');
 const LogTimes = require('./log_times');
 const Forwarder = require('./forwarder');
+const lumberjack = require('./lumberjack');
 const openwhisk = require('openwhisk');
-
-const lumberjack = require('lumberjack-protocol');
 
 const calculateOptions = params => {
   if (!Array.isArray(params.actions)) {
@@ -43,7 +42,8 @@ const calculateOptions = params => {
     copy.from = new Date().getTime();
   }
 
-  copy.name = process.env['__OW_ACTION_NAME'];
+  const actionId = process.env['__OW_ACTION_NAME'];
+  copy.name = actionId.split('/').slice(2).join('/');
 
   return copy;
 };
