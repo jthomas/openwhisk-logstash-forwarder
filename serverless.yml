@@ -3,19 +3,18 @@ service: logging
 provider:
   name: openwhisk
 
+custom:
+  config: ${file(config.json)}
+
 functions:
   logstash-forwarder:
     handler: dist/index.main
     parameters:
-      actions:
-        - sample_logs
-      from: <MS_SINCE_EPOCH>
-      logstash:
-        host: <LOGSTASH_HOST>
-        port: <LOGSTASH_PORT>
-        rejectUnauthorized: false
-    events:
-      - schedule: cron(* * * * *)
+      actions: ${self:custom.config.actions}
+      from: ${self:custom.config.from}
+      logstash: ${self:custom.config.logstash}
+      events:
+        - schedule: cron(* * * * *)
 
 plugins:
   - serverless-openwhisk

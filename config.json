@@ -1,0 +1,8 @@
+{
+  "actions": ["sample_action"],
+  "from": 0,
+  "logstash": {
+    "host": "elk_host.com",
+    "port": 5000
+  }
+}
