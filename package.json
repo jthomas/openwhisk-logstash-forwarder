@@ -24,7 +24,10 @@
     "babel-preset-env": "^1.6.1",
     "sinon": "^4.0.1"
   },
+  "repository": "jthomas/openwhisk-logstash-forwarder",
   "keywords": [
+    "elasticsearch",
+    "logstash",
     "serverless",
     "openwhisk"
   ]

@@ -4,11 +4,7 @@ Serverless implementation of a "[logstash forwarder](https://michael.bouvy.net/b
 
 Pushes [OpenWhisk actions logs](https://lornajane.net/posts/2017/debug-openwhisk-oneline-command-for-logs) into [ElasticSearch](https://www.elastic.co/) using [Lumberjack input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-lumberjack.html) for [Logstash](https://www.elastic.co/guide/en/logstash/current/index.html).
 
-SPELL CHECK
-
-SHOW WORKING…
-
-GIF / VIDEO.
+![Demo](.resources/demo.gif "Demo of openwhisk logstash forwarder")
 
 ## usage
 
@@ -38,7 +34,7 @@ Log messages are indexed with the following JSON object syntax.
 
 Using [Kibana](https://www.elastic.co/guide/en/kibana/index.html), log messages can be searched and monitored using dashboards.
 
-IMAGE OF KIBANA DASHBOARD.
+![Kibana UI](.resources/kibana_copy.png "Kibana Dashboard")
 
 ## configuration
 
@@ -132,10 +128,16 @@ This project can be deployed using [The Serverless Framework](https://serverless
   $ wsk property set --apihost openwhisk.ng.bluemix.net --auth <API_KEY>
   ```
 
+- Create action package from source files and dependencies.
+
+  ```
+  $ zip -r action.zip dist/ node_modules/ package.json
+  ```
+
 - Deploy action with default configuration parameters.
 
   ```
-  $ wsk action create logstash-forwarder dist/index.js --param-file config.json
+  $ wsk action create logstash-forwarder action.zip --kind nodejs:6 --param-file config.json
   ```
 
 - Create trigger using feed from alarm package.
