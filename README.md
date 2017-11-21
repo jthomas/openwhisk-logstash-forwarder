@@ -90,12 +90,12 @@ Monitoring properties are configured in the `config.json` file. This controls th
 
   ```
   {
-    "actions": ["sample_action"],		<-- list of action names
-    "from": 0, 						<-- monitor logs from this unix time
+    "actions": ["sample_action"],   <-- list of action names
+    "from": 0,                      <-- monitor logs from this unix time
     "logstash": {
-      "host": "my_host.com",			<-- host name for logstash service
-      "port": 5000					<-- port for logstash service (5000)
-      "rejectUnauthorized": false  	<-- support use of self-signed certificates
+      "host": "my_host.com",        <-- host name for logstash service
+      "port": 5000                  <-- port for logstash service (5000)
+      "rejectUnauthorized": false   <-- support use of self-signed certificates
     }
   }
   ```
