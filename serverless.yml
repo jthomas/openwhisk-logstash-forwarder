@@ -13,8 +13,8 @@ functions:
       actions: ${self:custom.config.actions}
       from: ${self:custom.config.from}
       logstash: ${self:custom.config.logstash}
-      events:
-        - schedule: cron(* * * * *)
+    events:
+      - schedule: cron(* * * * *)
 
 plugins:
   - serverless-openwhisk

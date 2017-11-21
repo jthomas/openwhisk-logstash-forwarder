@@ -32,14 +32,14 @@ const calculateOptions = params => {
     throw new Error('logstash.port parameter is missing or invalid');
   }
 
-  if (params.from && typeof params.from !== 'number') {
+  if (params.hasOwnProperty('from') && typeof params.from !== 'number') {
     throw new Error('from parameter is not a number');
   }
 
   const copy = Object.assign({}, params);
 
-  if (!copy.from) {
-    copy.from = new Date().getTime();
+  if (!copy.hasOwnProperty('from')) {
+    copy.from = 0;
   }
 
   const actionId = process.env['__OW_ACTION_NAME'];

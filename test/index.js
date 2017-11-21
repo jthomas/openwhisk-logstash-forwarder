@@ -19,10 +19,10 @@ test('should throw error for missing or invalid logstash parameter', t => {
   t.throws(() => index.calculateOptions({actions: ['name'], logstash: { host: 'host.com' }}), 'logstash.port parameter is missing or invalid')
 })
 
-test('should add from parameter as now if missing', t => {
+test('should add from parameter as 0 if missing', t => {
   process.env['__OW_ACTION_NAME'] = '/namespace/testing'
   const params = index.calculateOptions({actions: ['name'], logstash: {host: 'localhost', port: 5000}})
-  t.is(params.from, (new Date().getTime()))
+  t.is(params.from, 0)
   delete process.env['__OW_ACTION_NAME']
 })
 
